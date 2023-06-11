@@ -1,0 +1,46 @@
+<!doctype html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Stencil Component Starter</title> <style>body {
+        font-family: sans-serif;
+      }
+
+      .side-nav ul {
+        list-style: none;
+      }
+
+      .sive-nav li {
+        margin: 1rem 0;
+      }
+
+      .side-nav a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+      }
+
+      button {
+        font: inherit;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid rgb(33, 93, 141);
+        background: rgb(19, 61, 120);
+        color: white;
+        cursor: pointer;
+      }</style> <script type="module" src="/build/stockfinder.esm.js" data-stencil></script> <script nomodule="" src="/build/stockfinder.js" data-stencil></script> </head> <body> <button id="side-toggle-btn">&gt;</button> <side-bar title="Main Menu"> <nav class="side-nav"> <ul> <li><a href="#">Link 1</a></li> <li><a href="#">Link 2</a></li> <li><a href="#">Link 3</a></li> </ul> </nav> </side-bar> <stock-price stock-symbol="AAPL"></stock-price> <stock-finder></stock-finder> <script>
+      const sideToggleButton = document.querySelector("#side-toggle-btn")
+      const sideBar = document.querySelector("side-bar")
+      const stockFinderEl = document.querySelector("stock-finder")
+      stockFinderEl.addEventListener("ucSymbolSelected", event => {
+        console.log(event)
+      })
+      sideToggleButton.addEventListener("click", () => {
+        if(!sideBar.opened){
+          sideBar.open()
+        }
+      })
+    </script> <script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  // auto-unregister service worker during dev mode
+  navigator.serviceWorker.getRegistration().then(function(registration) {
+  if (registration) {
+    registration.unregister().then(function() { location.reload(true) });
+  }
+  });
+}
+</script></body></html>
